@@ -52,7 +52,7 @@ Karsten Thoms
 +++
 @title[New Project Lead]
 
-## Project-Lead
+## Project Lead
 
 ![Image-Absolute](https://avatars2.githubusercontent.com/u/238736?s=300)
 
@@ -125,7 +125,11 @@ Tamas Miklossy
   UPGRADE
   ****************************************************
 -->
----?image=assets/image/update-1672359_1920.png
+---?image=none
+
+@div[top-20 size=auto 10%]
+<img src="assets/image/update-1672359_1920.png" height="100"/>
+@divend
 
 - Gradle |
 - Maven / Eclipse Tycho |
@@ -142,15 +146,17 @@ Tamas Miklossy
 -->
 ---?image=https://upload.wikimedia.org/wikipedia/de/thumb/e/e1/Java-Logo.svg/541px-Java-Logo.svg.png&size=auto 90%
 
-+++?image=assets/image/screenshot-wizard-1.png
-
++++
+<img src="assets/image/screenshot-wizard-1.png" border="0"/>
 
 <!--
   ****************************************************
   JUNIT 5
   ****************************************************
 -->
----?image=https://junit.org/junit5/assets/img/junit5-logo.png
+---?image=https://junit.org/junit5/assets/img/junit5-logo.png&position=top 50px center&size=auto 35%
+
+<span style="font-size:3em; color:white; text-align:center">JUnit 5</span>
 
 <!--
   ****************************************************
@@ -158,8 +164,21 @@ Tamas Miklossy
   ****************************************************
 -->
 ---?image=https://blogs.itemis.com/hs-fs/hubfs/Blog/Xtext/Code-Mining-Preview.jpg
+@title[Code Mining]
+s
+
++++?code=examples/domainmodel/org.eclipse.xtext.example.domainmodel/src/org/eclipse/xtext/example/domainmodel/GenerateDomainmodel.mwe2&title=Generator Workflow GenerateDomainmodel.mwe2
+@[12](Import the CodeMiningFragment.)
+@[57-60](Configure the CodeMiningFragment.)
 
 +++?code=examples/domainmodel/org.eclipse.xtext.example.domainmodel.ui/src/org/eclipse/xtext/example/domainmodel/ui/codemining/DomainmodelCodeMiningProvider.java&lang=Java&title=DomainmodelCodeMiningProvider.java
+@[32](Inherit from <code>org.eclipse.xtext.ui.codemining.AbstractXtextCodeMiningProvider</code>)
+@[39-40](Implement <code>createCodeMinings()</code>)
+@[42, 45](Collect all instances of <code>Operation</code> in the resource and loop)
+@[47-49](Skip operations with an explicit return type)
+@[51-55](Compute the inferred return type name)
+@[57-60](Code Mining should be inserted after right paranthesis - find position within the Node Model)
+@[62-63](Compute the displayed mining text and create a <strong>line content code mining</strong>)
 
 <!--
   ****************************************************
