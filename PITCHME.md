@@ -119,8 +119,47 @@ Tamas Miklossy
 
 @size[0.5em](Participating in the Eclipse Photon Simultaneous Release)
 
+
+<!--
+  ****************************************************
+  UPGRADE
+  ****************************************************
+-->
+---?image=assets/image/update-1672359_1920.png
+
+- Gradle |
+- Maven / Eclipse Tycho |
+- Target Platform Definitions |
+- ObjectWeb ASM Library |
+- Orbit URL |
+- Node.js |
+- Oomph Setup |
+
+<!--
+  ****************************************************
+  JAVA
+  ****************************************************
+-->
 ---?image=https://upload.wikimedia.org/wikipedia/de/thumb/e/e1/Java-Logo.svg/541px-Java-Logo.svg.png&size=auto 90%
 
++++?image=assets/image/screenshot-wizard-1.png
+
+
+<!--
+  ****************************************************
+  JUNIT 5
+  ****************************************************
+-->
+---?image=https://junit.org/junit5/assets/img/junit5-logo.png
+
+<!--
+  ****************************************************
+  CODE MINING
+  ****************************************************
+-->
+---?image=https://blogs.itemis.com/hs-fs/hubfs/Blog/Xtext/Code-Mining-Preview.jpg
+
++++?code=examples/domainmodel/org.eclipse.xtext.example.domainmodel.ui/src/org/eclipse/xtext/example/domainmodel/ui/codemining/DomainmodelCodeMiningProvider.java&lang=Java&title=DomainmodelCodeMiningProvider.java
 
 <!--
   ****************************************************
@@ -142,6 +181,17 @@ Tamas Miklossy
 </tr>
 </table>
 
+---
+## Links
+
+- Xtext 2.14 Release Notes: https://www.eclipse.org/Xtext/releasenotes.html#/releasenotes/2018/05/23/version-2-14-0
+- Blog [“Xtext 2.14 adds support for JUnit 5“](https://blogs.itemis.com/en/xtext-2.14-adds-support-for-junit-5)
+- Blog [“Code Mining Support in Xtext”](https://blogs.itemis.com/en/code-mining-support-in-xtext)
+- Blog [“Generating a new project wizard with Xtext 2.14”](https://blogs.itemis.com/en/generating-a-new-project-wizard-with-xtext-2.14)
+- Blog [“New File Wizard – easy to generate with Xtext 2.14”](https://blogs.itemis.com/en/new-file-wizard-easy-to-generate-with-xtext-2.14)
+- Blog [“New Project Wizard: einfach mit Xtext 2.14 generieren” (German)](https://blogs.itemis.com/de/new-project-wizard-einfach-mit-xtext-2-14-generieren)
+- Blog [“Erzeugen des New File Wizards” (German)](https://blogs.itemis.com/de/new-file-wizard-einfach-mit-xtext-2.14-generieren)
+- [LSP4J Changelog](https://github.com/eclipse/lsp4j/blob/master/CHANGELOG.md) 
 
 ---
 ## Images
