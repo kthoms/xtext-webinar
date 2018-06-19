@@ -149,6 +149,19 @@ Tamas Miklossy
 +++
 <img src="assets/image/screenshot-wizard-1.png" border="0"/>
 
++++?code=examples/mydsl_j10/org.xtext.example.mydslj10.parent/pom.xml&language=xml&title=Parent POM (Tycho)
+@[10](Xtext Version)
+@[12-13](Maven Compiler Settings for Java 10)
+@[15-16](Tycho 1.2.0 for Java 10)
+@[17-21](Overridable properties for dynamic tycho-surefire-plugin configuration)
+@[218-228](Plugin management for tycho-surefire-plugin; no UI harness by default)
+@[260-270](Profile 'macos'; auto-activate on macOS and adds platform specific JVM arg for tycho-surefire-plugin)
+@[271-291](Profile 'jdk9-or-newer'; auto-activate on Java >=9 and configure JPMS)
+
++++?code=examples/mydsl_j10/org.xtext.example.mydslj10.parent/org.xtext.example.mydslj10.ui.tests/pom.xml&language=xml&title=pom.xml in UI Tests project
+@[21-27](Override managed configuration of tycho-surefire-plugin)
+@[25](Enable UI harness)
+
 <!--
   ****************************************************
   JUNIT 5
@@ -158,6 +171,10 @@ Tamas Miklossy
 
 <span style="font-size:3em; color:white; text-align:center">JUnit 5</span>
 
++++
+
+![Wizard: JUnit](https://www.eclipse.org/Xtext/images/releasenotes/2_14_wizard_junit5.gif)
+
 <!--
   ****************************************************
   CODE MINING
@@ -165,7 +182,10 @@ Tamas Miklossy
 -->
 ---?image=https://blogs.itemis.com/hs-fs/hubfs/Blog/Xtext/Code-Mining-Preview.jpg
 @title[Code Mining]
-s
+
++++
+
+![Code Mining Example](https://www.eclipse.org/Xtext/images/releasenotes/2_14_domainmodel-codemining.gif)
 
 +++?code=examples/domainmodel/org.eclipse.xtext.example.domainmodel/src/org/eclipse/xtext/example/domainmodel/GenerateDomainmodel.mwe2&title=Generator Workflow GenerateDomainmodel.mwe2
 @[12](Import the CodeMiningFragment.)
@@ -180,13 +200,28 @@ s
 @[57-60](Code Mining should be inserted after right paranthesis - find position within the Node Model)
 @[62-63](Compute the displayed mining text and create a <strong>line content code mining</strong>)
 
+
+<!--
+  ****************************************************
+  WHAT'S NEXT
+  ****************************************************
+-->
+---?image=assets/image/board-1647323_1920.jpg
+
+
 <!--
   ****************************************************
   QUESTIONS
   ****************************************************
 -->
----?image=assets/image/milky-way-2695569_1920.jpg
-### Questions?
+---?image=assets/image/questions-2408094_1920.jpg
+
+<!--
+  ****************************************************
+  CONTACT
+  ****************************************************
+-->
+---?image=assets/image/wallpaper-1492818_1920.jpg
 
 <br>
 <table>
@@ -199,6 +234,15 @@ s
   <td>@fa[envelope-square](schill@itemis.de)</td>
 </tr>
 </table>
+
+
+<!--
+  ****************************************************
+  THANKS
+  ****************************************************
+-->
+---?image=assets/image/thanks-1804597_1920.jpg
+
 
 ---
 ## Links
@@ -233,89 +277,4 @@ This presentation contains the following images:
   -->
 </table>
 
----?image=assets/image/milky-way-2695569_1920.jpg
-
----?code=sample/go/server.go&lang=golang&title=Golang File
-
-@[1,3-6](Present code found within any repo source file.)
-@[8-18](Without ever leaving your slideshow.)
-@[19-28](Using GitPitch code-presenting with (optional) annotations.)
-
----?image=assets/image/john-reign-abarintos.jpg
-
-@title[JavaScript Block]
-
-<p><span class="slide-title">JavaScript Block</span></p>
-
-```javascript
-// Include http module.
-var http = require("http");
-
-// Create the server. Function passed as parameter
-// is called on every request made.
-http.createServer(function (request, response) {
-  // Attach listener on end event.  This event is
-  // called when client sent, awaiting response.
-  request.on("end", function () {
-    // Write headers to the response.
-    // HTTP 200 status, Content-Type text/plain.
-    response.writeHead(200, {
-      'Content-Type': 'text/plain'
-    });
-    // Send data and end response.
-    response.end('Hello HTTP!');
-  });
-
-// Listen on the 8080 port.
-}).listen(8080);
-```
-
-@[1,2](You can present code inlined within your slide markdown too.)
-@[9-17](Displayed using code-syntax highlighting just like your IDE.)
-@[19-20](Again, all of this without ever leaving your slideshow.)
-
----?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8&lang=scala&title=Scala GIST
-
-@[23](You can even present code found within any GitHub GIST.)
-@[41-53](GIST source code is beautifully rendered on any slide.)
-@[57-62](And code-presenting works seamlessly for GIST too, both online and offline.)
-
----?image=assets/image/kyle-gregory-devaras.jpg
-
-## Template Help
-
-- [Code Presenting](https://github.com/gitpitch/gitpitch/wiki/Code-Presenting)
-  + [Repo Source](https://github.com/gitpitch/gitpitch/wiki/Code-Delimiter-Slides), [Static Blocks](https://github.com/gitpitch/gitpitch/wiki/Code-Slides), [GIST](https://github.com/gitpitch/gitpitch/wiki/GIST-Slides) 
-- [Custom CSS Styling](https://github.com/gitpitch/gitpitch/wiki/Slideshow-Custom-CSS)
-- [Slideshow Background Image](https://github.com/gitpitch/gitpitch/wiki/Background-Setting)
-- [Slide-specific Background Images](https://github.com/gitpitch/gitpitch/wiki/Image-Slides#background)
-- [Custom Logo](https://github.com/gitpitch/gitpitch/wiki/Logo-Setting), [TOC](https://github.com/gitpitch/gitpitch/wiki/Table-of-Contents), and [Footnotes](https://github.com/gitpitch/gitpitch/wiki/Footnote-Setting)
-
----?image=assets/image/kyle-gregory-devaras.jpg
-
-## Go GitPitch Pro!
-
-<br>
-<div class="left">
-    <i class="fa fa-user-secret fa-5x" aria-hidden="true"> </i><br>
-    <a href="https://gitpitch.com/pro-features" class="pro-link">
-    More details here.</a>
-</div>
-<div class="right">
-    <ul>
-        <li>Private Repos</li>
-        <li>Private URLs</li>
-        <li>Password-Protection</li>
-        <li>Image Opacity</li>
-        <li>SVG Image Support</li>
-    </ul>
-</div>
-
-
----?image=assets/image/gitpitch-audience.jpg
-
-@title[Download this Template!]
-
-### Get your presentation started!
-### [Download this template @fa[external-link gp-download]](https://gitpitch.com/template/download/space)
 
