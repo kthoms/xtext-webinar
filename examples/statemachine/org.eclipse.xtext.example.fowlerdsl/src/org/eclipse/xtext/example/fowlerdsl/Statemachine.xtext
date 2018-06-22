@@ -3,7 +3,7 @@ grammar org.eclipse.xtext.example.fowlerdsl.Statemachine with org.eclipse.xtext.
 generate statemachine "http://www.eclipse.org/xtext/example/fowlerdsl/Statemachine"
 
 Statemachine :
-     {Statemachine}
+    {Statemachine}
 	('events' 
 		events+=Event+ 
 	'end')?
@@ -16,14 +16,17 @@ Statemachine :
 	states+=State*
 ;
 
+@Exported
 Event:
 	name=ID code=ID
 ;
 
+@Exported
 Command:
 	name=ID code=ID
 ;
 
+@Exported
 State:
 	'state' name=ID
 		('actions' '{' actions+=[Command]+ '}')?
@@ -31,6 +34,7 @@ State:
 	'end'
 ;
 
+@Deprecated
 Transition:
 	event=[Event] '=>' state=[State]
 ;

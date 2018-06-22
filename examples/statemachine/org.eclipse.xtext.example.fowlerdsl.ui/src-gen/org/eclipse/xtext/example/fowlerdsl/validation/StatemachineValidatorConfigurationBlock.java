@@ -18,6 +18,7 @@ public class StatemachineValidatorConfigurationBlock extends AbstractValidatorCo
 
 	@Override
 	protected void fillSettingsPage(Composite composite, int nColumns, int defaultIndent) {
+		addComboBox(StatemachineConfigurableIssueCodesProvider.DEPRECATED_MODEL_PART, "Deprecated Model Part", composite, defaultIndent);
 	}
 
 	@Override

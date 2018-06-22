@@ -1,7 +1,19 @@
 package org.eclipse.xtext.example.domainmodel.tests;
 
+import com.google.inject.Inject;
+import java.lang.reflect.Method;
 import org.eclipse.xtext.example.domainmodel.domainmodel.DomainModel;
 import org.eclipse.xtext.example.domainmodel.tests.DomainmodelInjectorProvider;
+import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
+import org.eclipse.xtext.testing.InjectWith;
+import org.eclipse.xtext.testing.XtextRunner;
+import org.eclipse.xtext.testing.util.ParseHelper;
+import org.eclipse.xtext.testing.validation.ValidationTestHelper;
+import org.eclipse.xtext.xbase.compiler.JvmModelGenerator;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.testing.OnTheFlyJavaCompiler2;
+import org.eclipse.xtext.xbase.testing.evaluation.AbstractXbaseEvaluationTest;
+import org.junit.runner.RunWith;
 
 /**
  * Xbase integration test.
@@ -13,41 +25,40 @@ import org.eclipse.xtext.example.domainmodel.tests.DomainmodelInjectorProvider;
  * 
  * @author Sven Efftinge
  */
-/* @RunWith(/* name is null */)
-@InjectWith(DomainmodelInjectorProvider.class) */@SuppressWarnings("all")
-public class XbaseIntegrationTest /* implements AbstractXbaseEvaluationTest  */{
-  /* @Inject
-   */private /* OnTheFlyJavaCompiler2 */Object javaCompiler;
+@RunWith(XtextRunner.class)
+@InjectWith(DomainmodelInjectorProvider.class)
+@SuppressWarnings("all")
+public class XbaseIntegrationTest extends AbstractXbaseEvaluationTest {
+  @Inject
+  private OnTheFlyJavaCompiler2 javaCompiler;
   
-  /* @Inject
-   */private /* ParseHelper<DomainModel> */Object parseHelper;
+  @Inject
+  private ParseHelper<DomainModel> parseHelper;
   
-  /* @Inject
-   */private /* ValidationTestHelper */Object validationHelper;
+  @Inject
+  private ValidationTestHelper validationHelper;
   
-  /* @Inject
-   */private /* JvmModelGenerator */Object generator;
+  @Inject
+  private JvmModelGenerator generator;
   
   @Override
   protected Object invokeXbaseExpression(final String expression) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nInMemoryFileSystemAccess cannot be resolved."
-      + "\nThe field XbaseIntegrationTest.parseHelper refers to the missing type ParseHelper"
-      + "\nThe field XbaseIntegrationTest.validationHelper refers to the missing type ValidationTestHelper"
-      + "\nThe field XbaseIntegrationTest.generator refers to the missing type JvmModelGenerator"
-      + "\nThe field XbaseIntegrationTest.javaCompiler refers to the missing type OnTheFlyJavaCompiler2"
-      + "\nparse cannot be resolved"
-      + "\nassertNoErrors cannot be resolved"
-      + "\ndoGenerate cannot be resolved"
-      + "\neResource cannot be resolved"
-      + "\ngetTextFiles cannot be resolved"
-      + "\nvalues cannot be resolved"
-      + "\niterator cannot be resolved"
-      + "\nnext cannot be resolved"
-      + "\ncompileToClass cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\nnewInstance cannot be resolved"
-      + "\ngetDeclaredMethod cannot be resolved"
-      + "\ninvoke cannot be resolved");
+    try {
+      Object _xblockexpression = null;
+      {
+        final DomainModel parse = this.parseHelper.parse((("entity Foo { op doStuff() : Object { " + expression) + " } } "));
+        this.validationHelper.assertNoErrors(parse);
+        final InMemoryFileSystemAccess fsa = new InMemoryFileSystemAccess();
+        this.generator.doGenerate(parse.eResource(), fsa);
+        final CharSequence concatenation = fsa.getTextFiles().values().iterator().next();
+        final Class<?> clazz = this.javaCompiler.compileToClass("Foo", concatenation.toString());
+        final Object foo = clazz.newInstance();
+        final Method method = clazz.getDeclaredMethod("doStuff");
+        _xblockexpression = method.invoke(foo);
+      }
+      return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }

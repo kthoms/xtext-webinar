@@ -13,6 +13,7 @@ import org.eclipse.xtext.example.fowlerdsl.generator.StatemachineGenerator;
 import org.eclipse.xtext.example.fowlerdsl.parser.antlr.StatemachineAntlrTokenFileProvider;
 import org.eclipse.xtext.example.fowlerdsl.parser.antlr.StatemachineParser;
 import org.eclipse.xtext.example.fowlerdsl.parser.antlr.internal.InternalStatemachineLexer;
+import org.eclipse.xtext.example.fowlerdsl.resource.StatemachineResourceDescriptionStrategy;
 import org.eclipse.xtext.example.fowlerdsl.scoping.StatemachineScopeProvider;
 import org.eclipse.xtext.example.fowlerdsl.serializer.StatemachineSemanticSequencer;
 import org.eclipse.xtext.example.fowlerdsl.serializer.StatemachineSyntacticSequencer;
@@ -32,6 +33,7 @@ import org.eclipse.xtext.parser.antlr.Lexer;
 import org.eclipse.xtext.parser.antlr.LexerBindings;
 import org.eclipse.xtext.parser.antlr.LexerProvider;
 import org.eclipse.xtext.resource.IContainer;
+import org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy;
 import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.containers.IAllContainersState;
 import org.eclipse.xtext.resource.containers.ResourceSetBasedAllContainersStateProvider;
@@ -166,6 +168,11 @@ public abstract class AbstractStatemachineRuntimeModule extends DefaultRuntimeMo
 	// contributed by org.eclipse.xtext.xtext.generator.scoping.ImportNamespacesScopingFragment2
 	public void configureIgnoreCaseLinking(Binder binder) {
 		binder.bindConstant().annotatedWith(IgnoreCaseLinking.class).to(false);
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.index.ResourceDescriptionStrategyFragment
+	public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
+		return StatemachineResourceDescriptionStrategy.class;
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.exporting.QualifiedNamesFragment2

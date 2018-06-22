@@ -1,124 +1,299 @@
 package org.eclipse.xtext.example.domainmodel.tests;
 
+import com.google.inject.Inject;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.example.domainmodel.domainmodel.DomainModel;
 import org.eclipse.xtext.example.domainmodel.tests.DomainmodelInjectorProvider;
+import org.eclipse.xtext.testing.InjectWith;
+import org.eclipse.xtext.testing.XtextRunner;
+import org.eclipse.xtext.testing.util.ParseHelper;
+import org.eclipse.xtext.testing.validation.ValidationTestHelper;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.validation.IssueCodes;
+import org.eclipse.xtext.xtype.XtypePackage;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
-/* @RunWith(/* name is null */)
-@InjectWith(DomainmodelInjectorProvider.class) */@SuppressWarnings("all")
+@RunWith(XtextRunner.class)
+@InjectWith(DomainmodelInjectorProvider.class)
+@SuppressWarnings("all")
 public class ValidationTests {
-  /* @Inject */@Extension
-  private /* ParseHelper<DomainModel> */Object parseHelper;
+  @Inject
+  @Extension
+  private ParseHelper<DomainModel> parseHelper;
   
-  /* @Inject */@Extension
-  private /* ValidationTestHelper */Object validationTestHelper;
+  @Inject
+  @Extension
+  private ValidationTestHelper validationTestHelper;
   
-  /* @Test
-   */public Object testImportUnused() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertWarning(Object, Object, Object) is undefined"
-      + "\nThe method or field XIMPORT_DECLARATION is undefined"
-      + "\nThe method or field IMPORT_UNUSED is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportUnused() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.List");
+    _builder.newLine();
+    _builder.append("entity X {}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertWarning(model, XtypePackage.Literals.XIMPORT_DECLARATION, IssueCodes.IMPORT_UNUSED);
   }
   
-  /* @Test
-   */public Object testImportUnused_1() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertWarning(Object, Object, Object) is undefined"
-      + "\nThe method or field XIMPORT_DECLARATION is undefined"
-      + "\nThe method or field IMPORT_UNUSED is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportUnused_1() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.List");
+    _builder.newLine();
+    _builder.append("entity X {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("sb: java.util.List<String>");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertWarning(model, XtypePackage.Literals.XIMPORT_DECLARATION, IssueCodes.IMPORT_UNUSED);
   }
   
-  /* @Test
-   */public Object testImportUnused_2() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertNoIssues(Object) is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportUnused_2() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.List");
+    _builder.newLine();
+    _builder.append("entity X {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("sb : List<String>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("op foo() : List<String> {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("sb");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertNoIssues(model);
   }
   
-  /* @Test
-   */public Object testImportUnused_3() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertNoIssues(Object) is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportUnused_3() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.Map$Entry");
+    _builder.newLine();
+    _builder.append("entity X {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("sb: Entry<String, String>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("op foo() : Entry<String, String> {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("sb");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertNoIssues(model);
   }
   
-  /* @Test
-   */public Object testImportUnused_4() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertNoIssues(Object) is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportUnused_4() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.Map");
+    _builder.newLine();
+    _builder.append("entity X { ");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("sb: Map$Entry<String, String> ");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("op foo() : Map$Entry<String, String> {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("sb");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertNoIssues(model);
   }
   
-  /* @Test
-   */public Object testImportUnused_5() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertNoIssues(Object) is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportUnused_5() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.Map$Entry");
+    _builder.newLine();
+    _builder.append("entity X {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("sb: Map$Entry<String, String>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("op foo(): Map$Entry<String, String> {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("sb");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertNoIssues(model);
   }
   
-  /* @Test
-   */public Object testImportUnused_6() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertNoIssues(Object) is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportUnused_6() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.awt.Label");
+    _builder.newLine();
+    _builder.append("/** {@link Label} */ ");
+    _builder.newLine();
+    _builder.append("entity X{}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertNoIssues(model);
   }
   
-  /* @Test
-   */public Object testImportUnused_7() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertNoIssues(Object) is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportUnused_7() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.awt.Label");
+    _builder.newLine();
+    _builder.append("/** @see Label */");
+    _builder.newLine();
+    _builder.append("entity X{}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertNoIssues(model);
   }
   
-  /* @Test
-   */public Object testImportDuplicate() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertWarning(Object, Object, Object) is undefined"
-      + "\nThe method or field XIMPORT_DECLARATION is undefined"
-      + "\nThe method or field IMPORT_UNUSED is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportDuplicate() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.List");
+    _builder.newLine();
+    _builder.append("import java.util.List");
+    _builder.newLine();
+    _builder.append("entity X {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("sb: List<String>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("op foo() : List<String> {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("sb");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertWarning(model, XtypePackage.Literals.XIMPORT_DECLARATION, IssueCodes.IMPORT_UNUSED);
   }
   
-  /* @Test
-   */public Object testImportCollision() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertError(Object, Object, Object) is undefined"
-      + "\nThe method or field XIMPORT_DECLARATION is undefined"
-      + "\nThe method or field IMPORT_COLLISION is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportCollision() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.List");
+    _builder.newLine();
+    _builder.append("import java.awt.List");
+    _builder.newLine();
+    _builder.append("entity X {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("sb: List");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("op foo() : List {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("sb");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertError(model, XtypePackage.Literals.XIMPORT_DECLARATION, IssueCodes.IMPORT_COLLISION);
   }
   
-  /* @Test
-   */public Object testImportWildcard() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertWarning(Object, Object, Object) is undefined"
-      + "\nThe method or field XIMPORT_DECLARATION is undefined"
-      + "\nThe method or field IMPORT_WILDCARD_DEPRECATED is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportWildcard() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.*");
+    _builder.newLine();
+    _builder.append("import java.util.List");
+    _builder.newLine();
+    _builder.append("entity X {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("sb: List<String>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("op foo() : List<String> {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("sb");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertWarning(model, XtypePackage.Literals.XIMPORT_DECLARATION, IssueCodes.IMPORT_WILDCARD_DEPRECATED);
   }
   
-  /* @Test
-   */public Object testImportConflictWithTypeInSameFile() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertError(Object, Object, Object) is undefined"
-      + "\nThe method or field XIMPORT_DECLARATION is undefined"
-      + "\nThe method or field IMPORT_CONFLICT is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportConflictWithTypeInSameFile() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.List ");
+    _builder.newLine();
+    _builder.append("entity List {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertError(model, XtypePackage.Literals.XIMPORT_DECLARATION, IssueCodes.IMPORT_CONFLICT);
   }
   
-  /* @Test
-   */public Object testImportNoConflictWithTypeInSameFile() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method assertNoErrors(Object) is undefined"
-      + "\nThe method parse(CharSequence) from the type ValidationTests refers to the missing type Object");
+  @Test
+  public void testImportNoConflictWithTypeInSameFile() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import java.util.List");
+    _builder.newLine();
+    _builder.append("entity List2 {");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    final DomainModel model = this.parse(_builder);
+    this.validationTestHelper.assertNoErrors(model);
   }
   
-  protected Object parse(final CharSequence modelAsText) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ValidationTests.parseHelper refers to the missing type ParseHelper"
-      + "\nparse cannot be resolved");
+  protected DomainModel parse(final CharSequence modelAsText) {
+    try {
+      return this.parseHelper.parse(modelAsText);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }

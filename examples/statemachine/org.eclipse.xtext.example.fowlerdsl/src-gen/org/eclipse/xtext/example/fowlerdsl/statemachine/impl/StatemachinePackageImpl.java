@@ -90,7 +90,7 @@ public class StatemachinePackageImpl extends EPackageImpl implements Statemachin
 
   /**
    * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-   * 
+   *
    * <p>This method is used to initialize {@link StatemachinePackage#eINSTANCE} when that field is accessed.
    * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
    * <!-- begin-user-doc -->
@@ -105,7 +105,8 @@ public class StatemachinePackageImpl extends EPackageImpl implements Statemachin
     if (isInited) return (StatemachinePackage)EPackage.Registry.INSTANCE.getEPackage(StatemachinePackage.eNS_URI);
 
     // Obtain or create and register package
-    StatemachinePackageImpl theStatemachinePackage = (StatemachinePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof StatemachinePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new StatemachinePackageImpl());
+    Object registeredStatemachinePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+    StatemachinePackageImpl theStatemachinePackage = registeredStatemachinePackage instanceof StatemachinePackageImpl ? (StatemachinePackageImpl)registeredStatemachinePackage : new StatemachinePackageImpl();
 
     isInited = true;
 
@@ -118,7 +119,6 @@ public class StatemachinePackageImpl extends EPackageImpl implements Statemachin
     // Mark meta-data to indicate it can't be changed
     theStatemachinePackage.freeze();
 
-  
     // Update the registry and return the package
     EPackage.Registry.INSTANCE.put(StatemachinePackage.eNS_URI, theStatemachinePackage);
     return theStatemachinePackage;

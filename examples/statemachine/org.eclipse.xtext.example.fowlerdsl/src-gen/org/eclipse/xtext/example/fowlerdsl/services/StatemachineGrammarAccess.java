@@ -126,6 +126,7 @@ public class StatemachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cCodeIDTerminalRuleCall_1_0 = (RuleCall)cCodeAssignment_1.eContents().get(0);
 		
+		//@Exported
 		//Event:
 		//	name=ID code=ID;
 		@Override public ParserRule getRule() { return rule; }
@@ -153,6 +154,7 @@ public class StatemachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cCodeIDTerminalRuleCall_1_0 = (RuleCall)cCodeAssignment_1.eContents().get(0);
 		
+		//@Exported
 		//Command:
 		//	name=ID code=ID;
 		@Override public ParserRule getRule() { return rule; }
@@ -189,6 +191,7 @@ public class StatemachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTransitionsTransitionParserRuleCall_3_0 = (RuleCall)cTransitionsAssignment_3.eContents().get(0);
 		private final Keyword cEndKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
+		//@Exported
 		//State:
 		//	'state' name=ID ('actions' '{' actions+=[Command]+ '}')?
 		//	transitions+=Transition*
@@ -344,6 +347,7 @@ public class StatemachineGrammarAccess extends AbstractGrammarElementFinder {
 		return getStatemachineAccess().getRule();
 	}
 	
+	//@Exported
 	//Event:
 	//	name=ID code=ID;
 	public EventElements getEventAccess() {
@@ -354,6 +358,7 @@ public class StatemachineGrammarAccess extends AbstractGrammarElementFinder {
 		return getEventAccess().getRule();
 	}
 	
+	//@Exported
 	//Command:
 	//	name=ID code=ID;
 	public CommandElements getCommandAccess() {
@@ -364,6 +369,7 @@ public class StatemachineGrammarAccess extends AbstractGrammarElementFinder {
 		return getCommandAccess().getRule();
 	}
 	
+	//@Exported
 	//State:
 	//	'state' name=ID ('actions' '{' actions+=[Command]+ '}')?
 	//	transitions+=Transition*

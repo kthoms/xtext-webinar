@@ -32,9 +32,17 @@ Workflow {
 				generateStub = false
 			}
 			validator = {
-				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
-				generateDeprecationValidation = false
+				generateDeprecationValidation = true
 			}
+			
+			projectWizard= {
+				generate = true
+			}
+			fileWizard = {
+				generate = true
+			}
+			
+			
 		}
 	}
 }

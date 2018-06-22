@@ -15,7 +15,7 @@ import org.eclipse.xtext.example.fowlerdsl.validation.StatemachineValidator
  * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#quick-fixes
  */
 class StatemachineQuickfixProvider extends DefaultQuickfixProvider {
-
+/*
 	@Fix(StatemachineValidator.INVALID_NAME)
 	def capitalizeName(Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, "Change to '"+issue.data.head.toFirstLower+"'.", "Change to '"+issue.data.head.toFirstLower+"'.", 'upcase.png') [
@@ -23,4 +23,6 @@ class StatemachineQuickfixProvider extends DefaultQuickfixProvider {
 			xtextDocument.replace(issue.offset, 1, firstLetter.toLowerCase)
 		]
 	}
+	
+	*/
 }
