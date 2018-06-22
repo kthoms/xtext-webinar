@@ -3,207 +3,86 @@
  */
 package org.eclipse.xtext.example.domainmodel.tests;
 
-import com.google.inject.Inject;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.common.types.JvmOperation;
-import org.eclipse.xtext.common.types.TypesPackage;
-import org.eclipse.xtext.example.domainmodel.domainmodel.AbstractElement;
 import org.eclipse.xtext.example.domainmodel.domainmodel.DomainModel;
-import org.eclipse.xtext.example.domainmodel.domainmodel.Entity;
-import org.eclipse.xtext.example.domainmodel.domainmodel.Feature;
-import org.eclipse.xtext.example.domainmodel.domainmodel.Operation;
-import org.eclipse.xtext.example.domainmodel.domainmodel.PackageDeclaration;
-import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
 import org.eclipse.xtext.example.domainmodel.tests.DomainmodelInjectorProvider;
-import org.eclipse.xtext.testing.InjectWith;
-import org.eclipse.xtext.testing.XtextRunner;
-import org.eclipse.xtext.testing.util.ParseHelper;
-import org.eclipse.xtext.testing.validation.ValidationTestHelper;
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
-import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.validation.IssueCodes;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner.class)
-@InjectWith(DomainmodelInjectorProvider.class)
-@SuppressWarnings("all")
+/* @RunWith(/* name is null */)
+@InjectWith(DomainmodelInjectorProvider.class) */@SuppressWarnings("all")
 public class DomainmodelParsingTest {
-  @Inject
-  @Extension
-  private ParseHelper<DomainModel> _parseHelper;
+  /* @Inject */@Extension
+  private /* ParseHelper<DomainModel> */Object _parseHelper;
   
-  @Inject
-  @Extension
-  private ValidationTestHelper _validationTestHelper;
+  /* @Inject */@Extension
+  private /* ValidationTestHelper */Object _validationTestHelper;
   
-  @Inject
-  @Extension
-  private IJvmModelAssociations _iJvmModelAssociations;
+  /* @Inject */@Extension
+  private /* IJvmModelAssociations */Object _iJvmModelAssociations;
   
-  @Test
-  public void testParsing() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("package example {");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("entity MyEntity {");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("property : String");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      final DomainModel model = this._parseHelper.parse(_builder);
-      AbstractElement _get = model.getElements().get(0);
-      final PackageDeclaration pack = ((PackageDeclaration) _get);
-      Assert.assertEquals("example", pack.getName());
-      AbstractElement _get_1 = pack.getElements().get(0);
-      final Entity entity = ((Entity) _get_1);
-      Assert.assertEquals("MyEntity", entity.getName());
-      Feature _get_2 = entity.getFeatures().get(0);
-      final Property property = ((Property) _get_2);
-      Assert.assertEquals("property", property.getName());
-      Assert.assertEquals("java.lang.String", property.getType().getIdentifier());
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+  /* @Test
+   */public void testParsing() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field parse is undefined for the type CharSequence"
+      + "\nThe method or field Assert is undefined"
+      + "\nThe method getElements() is undefined for the type PackageDeclaration"
+      + "\nThe method or field Assert is undefined"
+      + "\nThe method getFeatures() is undefined for the type Entity"
+      + "\nThe method or field Assert is undefined"
+      + "\nThe method or field Assert is undefined"
+      + "\nThe method getType() is undefined for the type Property"
+      + "\ngetElements cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\nassertEquals cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\nassertEquals cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\nassertEquals cannot be resolved"
+      + "\nassertEquals cannot be resolved"
+      + "\ngetIdentifier cannot be resolved");
   }
   
-  @Test
-  public void testJvmTypeReferencesValidator() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("import java.util.List");
-      _builder.newLine();
-      _builder.append("package example {");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("entity MyEntity {");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("p : List<int>");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      this._validationTestHelper.assertError(this._parseHelper.parse(_builder), 
-        TypesPackage.Literals.JVM_TYPE_REFERENCE, 
-        IssueCodes.INVALID_USE_OF_TYPE, 
-        "The primitive \'int\' cannot be a type argument");
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+  /* @Test
+   */public void testJvmTypeReferencesValidator() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field parse is undefined for the type CharSequence"
+      + "\nThe method or field TypesPackage is undefined"
+      + "\nThe method or field IssueCodes is undefined"
+      + "\nassertError cannot be resolved"
+      + "\nLiterals cannot be resolved"
+      + "\nJVM_TYPE_REFERENCE cannot be resolved"
+      + "\nINVALID_USE_OF_TYPE cannot be resolved");
   }
   
-  @Test
-  public void testParsingAndLinking() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("package example {");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("entity MyEntity {");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("property : String");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("op foo(String s) : String {");
-      _builder.newLine();
-      _builder.append("    \t");
-      _builder.append("this.property = s");
-      _builder.newLine();
-      _builder.append("    \t");
-      _builder.append("return s.toUpperCase");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      this._validationTestHelper.assertNoErrors(this._parseHelper.parse(_builder));
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+  /* @Test
+   */public void testParsingAndLinking() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field parse is undefined for the type CharSequence"
+      + "\nassertNoErrors cannot be resolved");
   }
   
-  @Test
-  public void testParsingAndLinkingWithImports() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("import java.util.List");
-      _builder.newLine();
-      _builder.append("package example {");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("entity MyEntity {");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("p : List<String>");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      this._validationTestHelper.assertNoErrors(this._parseHelper.parse(_builder));
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+  /* @Test
+   */public void testParsingAndLinkingWithImports() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field parse is undefined for the type CharSequence"
+      + "\nassertNoErrors cannot be resolved");
   }
   
-  @Test
-  public void testReturnTypeInference() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("package example {");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("entity MyEntity {");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("property : String");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("op foo(String s) {");
-      _builder.newLine();
-      _builder.append("    \t");
-      _builder.append("return property.toUpperCase + s");
-      _builder.newLine();
-      _builder.append("    ");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("}");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      final DomainModel model = this._parseHelper.parse(_builder);
-      AbstractElement _head = IterableExtensions.<AbstractElement>head(model.getElements());
-      final PackageDeclaration pack = ((PackageDeclaration) _head);
-      AbstractElement _head_1 = IterableExtensions.<AbstractElement>head(pack.getElements());
-      final Entity entity = ((Entity) _head_1);
-      Feature _last = IterableExtensions.<Feature>last(entity.getFeatures());
-      final Operation op = ((Operation) _last);
-      EObject _head_2 = IterableExtensions.<EObject>head(this._iJvmModelAssociations.getJvmElements(op));
-      final JvmOperation method = ((JvmOperation) _head_2);
-      Assert.assertEquals("String", method.getReturnType().getSimpleName());
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+  /* @Test
+   */public void testReturnTypeInference() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nJvmOperation cannot be resolved to a type."
+      + "\nThe method or field parse is undefined for the type CharSequence"
+      + "\nThe method or field elements is undefined for the type PackageDeclaration"
+      + "\nThe method or field features is undefined for the type Entity"
+      + "\nThe method or field jvmElements is undefined for the type Operation"
+      + "\nThe method or field Assert is undefined"
+      + "\nelements cannot be resolved"
+      + "\nhead cannot be resolved"
+      + "\nhead cannot be resolved"
+      + "\nlast cannot be resolved"
+      + "\nhead cannot be resolved"
+      + "\nassertEquals cannot be resolved"
+      + "\nreturnType cannot be resolved"
+      + "\nsimpleName cannot be resolved");
   }
 }
