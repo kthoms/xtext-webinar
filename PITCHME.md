@@ -203,6 +203,83 @@ Tamas Miklossy
 
 # Grammar Annotations
 
++++
+![Annotations](assets/image/annotations/Annotations.png)
+
+
++++
+![Deprecated Rule](assets/image/annotations/Deprecated.png)
+
+
++++?code=examples/statemachine/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/GenerateStatemachine.mwe2&title=Generator Workflow GenerateStatemachine.mwe2
+@title[@Deprecated]
+
+## @Deprecated
+
+@[35](Enable deprection warnings)
+
+
++++
+
+![Deprecation Warning](assets/image/annotations/Deprecated3.png)
+
+
++++
+@title[@Final]
+
+@div[left-50 cover]
+<img src="assets/image/annotations/FinalRule.png" height="300" alt="Final Rule"/>
+@divend
+
+@div[right-50]
+<img src="assets/image/annotations/FinalMarker.png" height="300" alt="Final Error Marker"/>
+@divend
+
+
++++?code=examples/statemachine/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/Statemachine.xtext&title=Statemachine.xtext
+@title[@Exported]
+
+@[19,24,29](`@Exported` annotation)
+
+
++++?code=examples/statemachine/org.eclipse.xtext.example.fowlerdsl/src-gen/org/eclipse/xtext/example/fowlerdsl/resource/StatemachineAbstractResourceDescriptionStrategy.java&title=StatemachineAbstractResourceDescriptionStrategy.java
+
+
+<!--
+  ****************************************************
+  WIZARDS
+  ****************************************************
+-->
+---
+
+# Wizards
+
++++?code=examples/statemachine/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/GenerateStatemachine.mwe2&title=Generator Workflow Configuration
+@[38-40](Enable generation of New Project Wizard) 
+
+
++++?code=examples/statemachine/org.eclipse.xtext.example.fowlerdsl.ui/src/org/eclipse/xtext/example/fowlerdsl/ui/wizard/StatemachineProjectTemplateProvider.xtend&title=StatemachineProjectTemplateProvider.xtend
+@[22](Implement `IProjectTemplateProvider` interface)
+
++++?code=https://raw.githubusercontent.com/eclipse/xtext-eclipse/master/org.eclipse.xtext.ui/src/org/eclipse/xtext/ui/wizard/template/IProjectTemplateProvider.java
+
++++?code=examples/statemachine/org.eclipse.xtext.example.fowlerdsl.ui/src/org/eclipse/xtext/example/fowlerdsl/ui/wizard/StatemachineProjectTemplateProvider.xtend&title=StatemachineProjectTemplateProvider.xtend
+@[23-25,30](Provide templates)
+@[28-29](Active annotation `@ProjectTemplate`)
+@[31-35](Create widgets)
+@[37-44](Update variables on state change)
+@[46-51](Validate page state and raise issues)
+@[53-78](Produce content for template)
+@[54](Use `PluginProjectFactory`) for project creation
+@[55-56](Project name and target location)
+@[57-58](Project natures & builders)
+@[59](Create source folders)
+@[61-59](Generate files into created project)
+
+<!-- *** NEW FILE WIZARD *** -->
++++?code=examples/statemachine/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/GenerateStatemachine.mwe2&title=Generator Workflow Configuration
+@[41-43](Enable generation of New File Wizard) 
+
 
 <!--
   ****************************************************
