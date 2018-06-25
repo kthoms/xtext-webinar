@@ -90,3 +90,10 @@ span.black {
 
 .gp-download { margin-left: 10px; }
 
+.attribution * {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 0.2em;
+  text-align: right;
+}

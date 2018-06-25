@@ -126,9 +126,13 @@ Tamas Miklossy
   ****************************************************
 -->
 
----
+---?image=https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Vienna_-_Vienna_Opera_Backstage_-_9706.jpg/800px-Vienna_-_Vienna_Opera_Backstage_-_9706.jpg
 
-# Maintenance
+<div class="attribution">
+https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Vienna_-_Vienna_Opera_Backstage_-_9706.jpg/800px-Vienna_-_Vienna_Opera_Backstage_-_9706.jpg
+<br>
+Vienna Opera Backstage, Austria © Jorge Royan, licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a>
+</div>
 
 <!--
   ****************************************************
