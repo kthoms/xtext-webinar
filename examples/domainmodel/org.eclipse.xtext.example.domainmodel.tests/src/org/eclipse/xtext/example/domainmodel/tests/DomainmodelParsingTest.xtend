@@ -12,16 +12,20 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.Operation
 import org.eclipse.xtext.example.domainmodel.domainmodel.PackageDeclaration
 import org.eclipse.xtext.example.domainmodel.domainmodel.Property
 import org.eclipse.xtext.testing.InjectWith
-import org.eclipse.xtext.testing.XtextRunner
+import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.validation.IssueCodes
 import org.junit.Assert
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.^extension.ExtendWith
 
-@RunWith(XtextRunner)
+import static org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Tag
+
+@ExtendWith(InjectionExtension)
 @InjectWith(DomainmodelInjectorProvider)
 class DomainmodelParsingTest{
 
@@ -40,17 +44,19 @@ class DomainmodelParsingTest{
 		'''.parse
 		
 		val pack = model.getElements().get(0) as PackageDeclaration
-		Assert.assertEquals("example", pack.getName())
+		assertEquals("example", pack.getName())
 		
 		val entity = pack.getElements().get(0) as Entity
-		Assert.assertEquals("MyEntity", entity.getName())
+		assertEquals("MyEntity", entity.getName())
 		
 		val property = entity.getFeatures().get(0) as Property
-		Assert.assertEquals("property", property.getName());
-		Assert.assertEquals("java.lang.String", property.getType().getIdentifier());
+		assertEquals("property", property.getName());
+		assertEquals("java.lang.String", property.getType().getIdentifier());
 	}
 	
 	@Test
+	@DisplayName("Test JvmTypeReference Validation")
+	@Tag("fast")
 	def void testJvmTypeReferencesValidator() {
 		'''
 			import java.util.List

@@ -17,7 +17,7 @@ import org.eclipse.xtext.example.domainmodel.domainmodel.PackageDeclaration;
 import org.eclipse.xtext.example.domainmodel.domainmodel.Property;
 import org.eclipse.xtext.example.domainmodel.tests.DomainmodelInjectorProvider;
 import org.eclipse.xtext.testing.InjectWith;
-import org.eclipse.xtext.testing.XtextRunner;
+import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
 import org.eclipse.xtext.testing.validation.ValidationTestHelper;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
@@ -26,10 +26,13 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.validation.IssueCodes;
 import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-@RunWith(XtextRunner.class)
+@ExtendWith(InjectionExtension.class)
 @InjectWith(DomainmodelInjectorProvider.class)
 @SuppressWarnings("all")
 public class DomainmodelParsingTest {
@@ -65,20 +68,22 @@ public class DomainmodelParsingTest {
       final DomainModel model = this._parseHelper.parse(_builder);
       AbstractElement _get = model.getElements().get(0);
       final PackageDeclaration pack = ((PackageDeclaration) _get);
-      Assert.assertEquals("example", pack.getName());
+      Assertions.assertEquals("example", pack.getName());
       AbstractElement _get_1 = pack.getElements().get(0);
       final Entity entity = ((Entity) _get_1);
-      Assert.assertEquals("MyEntity", entity.getName());
+      Assertions.assertEquals("MyEntity", entity.getName());
       Feature _get_2 = entity.getFeatures().get(0);
       final Property property = ((Property) _get_2);
-      Assert.assertEquals("property", property.getName());
-      Assert.assertEquals("java.lang.String", property.getType().getIdentifier());
+      Assertions.assertEquals("property", property.getName());
+      Assertions.assertEquals("java.lang.String", property.getType().getIdentifier());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
   }
   
   @Test
+  @DisplayName("Test JvmTypeReference Validation")
+  @Tag("fast")
   public void testJvmTypeReferencesValidator() {
     try {
       StringConcatenation _builder = new StringConcatenation();
