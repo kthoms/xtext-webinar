@@ -188,11 +188,32 @@ Tamas Miklossy
 
 +++
 
-## JUnit 4 / JUnit 5
+![Workspace](assets/image/junit5/1_workspace.png)
 
 +++
 
-## Test execution
+![Add Library](assets/image/junit5/2_add_library.png)
+
++++
+
+![Add Library](assets/image/junit5/3_add_library_ju5.png)
+
++++
+
+![Add Library](assets/image/junit5/4_dependencies_old.png)
+
++++
+
+![Add Library](assets/image/junit5/5_dependencies_new.png)
+
++++
+
+![Add Library](assets/veideo/Xtext_JUnit5.mp4)
+
++++
+
+![Add Library](assets/image/junit5/6_run_test.png)
+
 
 <!--
   ****************************************************
@@ -214,7 +235,6 @@ Tamas Miklossy
 +++?code=examples/statemachine/org.eclipse.xtext.example.fowlerdsl/src/org/eclipse/xtext/example/fowlerdsl/GenerateStatemachine.mwe2&title=Generator Workflow GenerateStatemachine.mwe2
 @title[@Deprecated]
 
-## @Deprecated
 
 @[35](Enable deprection warnings)
 
@@ -228,11 +248,11 @@ Tamas Miklossy
 @title[@Final]
 
 @div[left-50 cover]
-<img src="assets/image/annotations/FinalRule.png" height="300" alt="Final Rule"/>
+<img src="assets/image/annotations/FinalRule.png" alt="Final Rule"/>
 @divend
 
 @div[right-50]
-<img src="assets/image/annotations/FinalMarker.png" height="300" alt="Final Error Marker"/>
+<img src="assets/image/annotations/FinalMarker.png" alt="Final Error Marker"/>
 @divend
 
 
